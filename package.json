@@ -3,22 +3,41 @@
   "displayName": "FunctionMapper",
   "description": "FunctionMapper transforms complex code relationships into clear, interactive visual diagrams. Perfect for developers exploring unfamiliar codebases, conducting code reviews, or documenting system architecture.",
   "version": "0.0.1",
+  "publisher": "kunxiang",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keloshen/vscode-functionmapper"
+  },
   "engines": {
     "vscode": "^1.104.0"
   },
   "categories": [
+    "Visualization",
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:vscode-functionmapper.showFunctionMap",
+    "onLanguage:typescript",
+    "onLanguage:javascript"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "vscode-functionmapper.helloWorld",
-        "title": "Hello World"
+        "command": "vscode-functionmapper.showFunctionMap",
+        "title": "FunctionMapper: Show Function Map"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "vscode-functionmapper.showFunctionMap",
+        "key": "ctrl+shift+m",
+        "mac": "cmd+shift+m",
+        "when": "editorTextFocus"
       }
     ]
   },
+
   "scripts": {
     "vscode:prepublish": "pnpm run package",
     "compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
